@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  article: MyString
+  title: MyString
+  size: MyString
+  csv_import_id: 
+
+two:
+  article: MyString
+  title: MyString
+  size: MyString
+  csv_import_id: 

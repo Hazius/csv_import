@@ -1,0 +1,37 @@
+%p#notice= notice
+
+%p
+  %b File:
+  = @csv_import.file
+
+%p
+  %b Lines:
+    %table
+      %thead
+        %tr
+          %th Article
+          %th Title
+          %th Size
+          %th Csv import
+          %th
+          %th
+          %th
+
+      %tbody
+        - @csv_import.csv_import_lines.each do |csv_import_line|
+          %tr
+            %td= csv_import_line.article
+            %td= csv_import_line.title
+            %td= csv_import_line.size
+            %td= csv_import_line.csv_import
+            %td= link_to 'Show', csv_import_line
+            %td= link_to 'Edit', edit_csv_import_line_path(csv_import_line)
+            %td= link_to 'Destroy', csv_import_line, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%p
+  %b Proccessed at:
+  = @csv_import.proccessed_at
+
+= link_to 'Edit', edit_csv_import_path(@csv_import)
+\|
+= link_to 'Back', csv_imports_path

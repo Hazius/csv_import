@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Article:
+  = @csv_import_line.article
+%p
+  %b Title:
+  = @csv_import_line.title
+%p
+  %b Size:
+  = @csv_import_line.size
+%p
+  %b Csv import:
+  = @csv_import_line.csv_import
+
+= link_to 'Edit', edit_csv_import_line_path(@csv_import_line)
+\|
+= link_to 'Back', csv_import_lines_path

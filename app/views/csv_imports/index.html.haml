@@ -1,0 +1,23 @@
+%h1 Listing csv_imports
+
+%table
+  %thead
+    %tr
+      %th File
+      %th Proccessed at
+      %th
+      %th
+      %th
+      
+  %tbody
+    - @csv_imports.each do |csv_import|
+      %tr
+        %td= csv_import.file
+        %td= csv_import.proccessed_at
+        %td= link_to 'Show', csv_import
+        %td= link_to 'Edit', edit_csv_import_path(csv_import)
+        %td= link_to 'Destroy', csv_import, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Csv import', new_csv_import_path
