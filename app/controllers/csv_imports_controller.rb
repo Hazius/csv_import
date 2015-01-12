@@ -101,7 +101,6 @@ class CsvImportsController < ApplicationController
         format.json { render :show, status: :ok, location: @csv_import }
       else
         format.html { render :edit }
-        format.json { render json: @csv_import.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -112,7 +111,6 @@ class CsvImportsController < ApplicationController
     @csv_import.destroy
     respond_to do |format|
       format.html { redirect_to csv_imports_url, notice: 'Csv import was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

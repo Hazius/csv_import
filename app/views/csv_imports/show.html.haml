@@ -1,22 +1,16 @@
 %p#notice= notice
 
 %p
-  %b File:
+  %b Файл:
   = @csv_import.file
 
-
-%b Lines:
 %table.table.table-stripped.table-bordered
 
   %thead
     %tr
-      %th Article
-      %th Title
-      %th Size
-      %th Csv import
-      %th
-      %th
-      %th
+      %th Артикль
+      %th Заголовок
+      %th Размер
 
   %tbody
     - @csv_import.csv_import_lines.each do |csv_import_line|
@@ -24,19 +18,13 @@
         %td= csv_import_line.article
         %td= csv_import_line.title
         %td= csv_import_line.size
-        %td= csv_import_line.csv_import
-        %td= link_to 'Show', csv_import_line
-        %td= link_to 'Edit', edit_csv_import_line_path(csv_import_line)
-        %td= link_to 'Destroy', csv_import_line, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %p
-  %b Proccessed at:
+  %b Обновленные данные в базе(дата):
   = @csv_import.proccessed_at
 
   = form_tag process_in_db_csv_imports_path, method: :patch do
     = hidden_field_tag :id, @csv_import.id
     = button_tag "Создать (обновить) записи в бд", class: "btn btn-success btn-lg"
 
-= link_to 'Edit', edit_csv_import_path(@csv_import), class: 'btn btn-default'
-\|
-= link_to 'Back', csv_imports_path, class: 'btn btn-default'
+= link_to 'Назад', csv_imports_path, class: 'btn btn-default'

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :csv_import_lines
 
   resources :csv_imports do
     collection do

@@ -1,4 +1,10 @@
+%h1 Создать csv_import (пример файла в assets/images)
+
 = simple_form_for(@csv_import) do |f|
   = f.error_notification
-  = f.file_field :file
-  = f.button :submit
+  .form-inputs
+    = f.file_field :file
+  .form-actions
+    = f.button :submit
+
+= link_to 'Отменить', csv_imports_path, class: 'btn btn-default'
