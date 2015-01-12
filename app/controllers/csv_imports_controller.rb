@@ -63,7 +63,8 @@ class CsvImportsController < ApplicationController
   def create
     @csv_import = CsvImport.new(csv_import_params)
     if @csv_import.save
-      csvImportProcessor = CsvImportProcessor.new(@csv_import.file.current_path)
+      # csvImportProcessor = CsvImportProcessor.new(@csv_import.file.current_path)
+      csvImportProcessor = CsvImportProcessor.new(@csv_import.file_from_storage)
       @csv_import.add_lines csvImportProcessor.body
     else
       format.html { render :new }

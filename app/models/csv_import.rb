@@ -17,4 +17,8 @@ class CsvImport < ActiveRecord::Base
     end
   end
 
+  def file_from_storage
+    file.file_from_storage
+  end
+
 end
