@@ -36,7 +36,7 @@ class CsvImportProcessor
 end
 
 class CsvImportsController < ApplicationController
-  before_action :set_csv_import, only: [:show, :edit, :update, :destroy, :process]
+  before_action :set_csv_import, only: [:show, :edit, :update, :destroy, :process_in_db]
 
   # GET /csv_imports
   # GET /csv_imports.json
@@ -81,7 +81,7 @@ class CsvImportsController < ApplicationController
   end
 
   def process_in_db
-    @csv_import.import_csv_lines.each do |line|
+    @csv_import.csv_import_lines.each do |line|
       # Update db...
     end
     @csv_import[:proccessed_at] = Time.now

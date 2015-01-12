@@ -1,4 +1,9 @@
-%h1 Создать csv_import (пример файла в assets/images)
+%h1 Создать csv_import
+
+.well.well-sm
+  %p
+    Загрузите на компьютер и заполните
+    = link_to 'файл для импорта', image_url('file_for_import.csv'), class: 'btn btn-default'
 
 = simple_form_for(@csv_import) do |f|
   = f.error_notification
