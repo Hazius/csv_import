@@ -14,7 +14,9 @@ class CsvImportProcessor
 
   # Получаем строки с данными (двумерный массив)
   def body
-    rows - [0]
+    result = rows
+    result.delete_at(0)
+    result
   end
 
   private
@@ -26,15 +28,15 @@ class CsvImportProcessor
     #   ["Шиповки СПРИНТ КЛАССИКА(новяк)", "8219"]
     # ]
     #############################################################
-    def rows(url_or_path, with_headers = false)
-      csv_data = open(url, "r:UTF-8")
+    def rows(with_headers = false)
+      csv_data = open(@file, "r:UTF-8")
       CSV.parse(csv_data.read, headers: with_headers) # :encoding => 'windows-1251:utf-8'
     end
 
 end
 
 class CsvImportsController < ApplicationController
-  before_action :set_csv_import, only: [:show, :edit, :update, :destroy]
+  before_action :set_csv_import, only: [:show, :edit, :update, :destroy, :process]
 
   # GET /csv_imports
   # GET /csv_imports.json
@@ -61,7 +63,7 @@ class CsvImportsController < ApplicationController
   def create
     @csv_import = CsvImport.new(csv_import_params)
     if @csv_import.save
-      csvImportProcessor = CsvImportProcessor.new(@csv_import.file)
+      csvImportProcessor = CsvImportProcessor.new(@csv_import.file.current_path)
       @csv_import.add_lines csvImportProcessor.body
     else
       format.html { render :new }
@@ -76,7 +78,18 @@ class CsvImportsController < ApplicationController
 
       end
     end
+  end
 
+  def process_in_db
+    @csv_import.import_csv_lines.each do |line|
+      # Update db...
+    end
+    @csv_import[:proccessed_at] = Time.now
+    if @csv_import.save
+      redirect_to csv_import_path(@csv_import)
+    else
+      render :show
+    end
   end
 
   # PATCH/PUT /csv_imports/1

@@ -1,6 +1,6 @@
 %h1 Listing csv_import_lines
 
-%table
+%table.table.table-stripped.table-bordered
   %thead
     %tr
       %th Article
@@ -10,7 +10,7 @@
       %th
       %th
       %th
-      
+
   %tbody
     - @csv_import_lines.each do |csv_import_line|
       %tr

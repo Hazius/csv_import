@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :csv_import_lines
 
-  resources :csv_imports
+  resources :csv_imports do
+    collection do
+      patch :process_in_db
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
