@@ -7,7 +7,10 @@ gem 'rails', '4.1.8'
 gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 
-gem 'sqlite3'
+group :development do
+  gem 'sqlite3'
+end
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -31,7 +34,10 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'carrierwave'
 
-
+group :production do
+  gem 'rails_12factor'
+  gem 'pg'
+end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
