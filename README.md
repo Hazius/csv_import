@@ -2,7 +2,7 @@
 
 ### Заготовка проекта:
 
-Гема:
+Гемы:
 ```ruby
 gem 'simple_form'
 gem 'carrierwave'
