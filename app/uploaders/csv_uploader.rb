@@ -17,7 +17,7 @@ class CsvUploader < CarrierWave::Uploader::Base
   end
 
   def file_from_storage
-    Rails.env.production? ? path : path
+    Rails.env.production? ? url : path
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
